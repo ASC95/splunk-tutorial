@@ -1,7 +1,8 @@
-- https://docs.splunk.com/Documentation/SplunkCloud/8.0.2001/SearchReference/Join
+- https://docs.splunk.com/Documentation/SplunkCloud/latest/SearchReference/Join
 - https://answers.splunk.com/answers/568034/chart-over-multiple-fields.html
 # Examples
 ## Join subsearches as line ratings
+### Search
 ```
 sourcetype="scada" 
 | timechart span=15m first("Power _MVA") BY "Line ID"
@@ -28,7 +29,29 @@ sourcetype="scada"
     ID" of the new events into a line rating name depending on the "Power _MVA" field
     - See `mvexpand.md` notes
   - Even better, learn how to use Splunk dashboard inputs to allow users to toggle lines and their ratings on and off
-# Background
+## Join on nonexistent column
+### Search
+```
+index=electrical_utility_data sourcetype=realtime_scada
+| where Power_MVA <= 0
+| join blah
+    [ search index=electrical_utility_data sourcetype=realtime_oms]
+```
+```
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| _time                 | Timestamp                 | Line_ID | Power_MVA | Origin_Bus_ID | Origin_Voltage_PU  | Destination_Bus_ID | Destination_Voltage_PU | Event_Timestamp           | Restoration_Timestamp     | Bus_Affected | Type         | Amount_MW |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| 6/2/20 1:15:00.000 AM | 2020-06-02 05:15:00+00:00 | 4-5     | 0.0       | 8             | 0.9904921699138927 | 9                  | 0.9182110817256903     | 2020-06-02 20:30:00+00:00 | 2020-06-02 20:45:00+00:00 | 5            | loss_of_load | 1.0       |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
+- Since "blah" is a nonexistent column for both the main search and the subsearch, I'm guessing that Splunk sees that it evaluates to NULL for both
+  searches and happily joins on NULL
+- The end result is very misleading. The base search had a realtime_scada event with a Line_ID of "8-9", but it was replaced by the value of Line_ID
+  of the subsearch, which was "4-5". The end result doesn't even make sense. The only reason the loss_of_load realtime_oms event was joined with the
+  base search is because it was the first event returned by the subsearch. If the correct realtime_oms event had been joined with the base search,
+  "Type" would be "line_outage"
+- When I try to join on a column that only the base search or subsearch has, _then_ I get 0 results as expected
+# Purpose
 - `join` is a centralized streaming command when a set of fields with which to join is provided
   - Otherwise, it is `dataset processing` command
 - Yes, I *can* simply join multiple `timechart` results together, but using `BY` in the outer and inner searches does not work like I want

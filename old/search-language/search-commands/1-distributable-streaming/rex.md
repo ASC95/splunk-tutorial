@@ -1,5 +1,6 @@
 - https://docs.splunk.com/Documentation/SplunkCloud/8.0.2001/SearchReference/Rex
 - https://docs.splunk.com/Documentation/Splunk/8.0.3/Knowledge/AboutSplunkregularexpressions - Splunk regex primer
+- https://answers.splunk.com/answers/593992/is-it-possible-to-use-regex-on-a-token-value.html - regex and tokens
 # Examples
 ## Extract new fields from existing fields
 - `sourcetype="oms" | rex field="Bus Affected" "(?<first>\d)-(?<second>\d)"`
@@ -18,9 +19,10 @@
   named capture groups into two new, identically named fields: \<first> and \<second>. \<first> and \<second> both attempt to match exactly one digit.
   - The regex successfully extracts the named capture groups from only one event, but that's okay
 - Return the three events with the new extracted fields
-# Background
+# Purpose
 - Splunk regular expressions are PCRE
   - Yes they are! If greediness doesn't appear to be working remember that "." is not a digit!
+- `rex` cannot be used in \<eval> markup with tokens (see source). Use `match` or `repalce` instead
 # Arguments
 ## Required
 - A regular expression enclosed in double quotes
