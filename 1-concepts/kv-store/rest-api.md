@@ -1,0 +1,2 @@
+- https://dev.splunk.com/enterprise/docs/developapps/manageknowledge/kvstore/usetherestapitomanagekv - REST API introduction
+- https://docs.splunk.com/Documentation/Splunk/latest/RESTREF/RESTkvstore - full REST API documentation

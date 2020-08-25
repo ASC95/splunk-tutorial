@@ -1,4 +1,0 @@
-- I know that an indexer won't override index-time fields that are sent by Cribl
-  - Will an indexer also refuse to override index-time fields that are sent by a heavy forwarder?
-- Will an indexer add index-time fields to events that are sent by a heavy forwarder?
-- Will an indexer add index-time fields to events that are sent by Cribl?

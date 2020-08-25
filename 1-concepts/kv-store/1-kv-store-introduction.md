@@ -1,4 +1,4 @@
-- https://docs.splunk.com/Documentation/Splunk/8.0.5/Admin/AboutKVstore
+- https://docs.splunk.com/Documentation/Splunk/latest/Admin/AboutKVstore
 - https://dev.splunk.com/enterprise/docs/developapps/manageknowledge/kvstore/aboutkvstorecollections/
 
 - KV Store files only reside on the search head (there's exceptions)

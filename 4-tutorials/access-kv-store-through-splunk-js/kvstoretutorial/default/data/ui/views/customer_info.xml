@@ -1,0 +1,38 @@
+<form>
+  <label>Customer Info XML</label>
+  <fieldset submitButton="true">
+    <input type="text" token="CustID">
+      <label>CustID</label>
+    </input>
+    <input type="text" token="CustName">
+      <label>CustName</label>
+    </input>
+    <input type="text" token="CustStreet">
+      <label>CustStreet</label>
+    </input>
+    <input type="text" token="CustCity">
+      <label>CustCity</label>
+    </input>
+    <input type="text" token="CustState">
+      <label>CustState</label>
+    </input>
+    <input type="text" token="CustZip">
+      <label>CustZip</label>
+    </input>
+    <input type="text" token="KeyID">
+      <label>KeyID</label>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>TBD</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</form>

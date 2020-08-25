@@ -1,0 +1,1 @@
+- https://dev.splunk.com/enterprise/docs/developapps/manageknowledge/setpermissionsforobjects/

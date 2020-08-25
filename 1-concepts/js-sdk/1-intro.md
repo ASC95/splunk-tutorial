@@ -1,0 +1,4 @@
+- https://dev.splunk.com/enterprise/docs/relnotes/relnotes-javascriptsdk/whatsnew/ - the current version of the JS SDK is 1.9.0
+- https://docs.splunk.com/DocumentationStatic/JavaScriptSDK/1.8.4/ - for whatever reason, this is the latest documentation I could find
+- https://docs.splunk.com/Documentation/WebFramework - latest version of the web framework
+- See `splunk/4-tutorials/access-kv-store-through-splunk-js/kvstoretutorial/default/data/ui/html/customer_info_html.html`
