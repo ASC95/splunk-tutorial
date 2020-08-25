@@ -1,0 +1,1 @@
+- https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Resolveorphanedsearches

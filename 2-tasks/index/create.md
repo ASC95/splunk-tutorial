@@ -25,13 +25,17 @@ thawedPath = $SPLUNK_DB/my_test_index/thaweddb
       it is called a thawed bucket
     - Recommended value: `$SPLUNK_DB/<index name>/thaweddb`
       - E.g. `thawedPath = $SPLUNK_DB/electrical_utility_data/thaweddb`
-- On my system, `$SPLUNK_DB` expands to `/Applications/Splunk/var/lib/splunk/`
+- The value of `$SPLUNK_DB` is set in `splunk-launch.conf`
+  - On macOS, `$SPLUNK_DB` expands to `/Applications/Splunk/var/lib/splunk/`
+  - On Ubuntu, `$SPLUNK_DB` expands to `/opt/splunk/var/lib/splunk/`
 # Purpose
 - Every stanza in `indexes.conf` does the following:
   - Provides data to `$ ./splunk list index`
     - This means that if an index stanza is commented out, the CLI command won't report it even if the index exists!
     - By the same token, if an index stanza is written before starting Splunk, the CLI will list the nonexistent index!
   - Initializes the index within Splunk on start-up if the index doesn't exist
+- If an index exists, but is not stored within this file, then Splunk Web WON'T show the index (verified)
+  - Thus, the only way to remove an index that I deleted from this file without actually deleting it is to examine the `$SPLUNK_DB` folder
 # Files
 - An index is created entirely by a valid stanza in `indexes.conf`
 - The default app partitioning command will give indexer _and_ search heads (but not forwarders) a copy of the `indexes.conf` defined in an app

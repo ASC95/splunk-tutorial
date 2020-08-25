@@ -25,3 +25,5 @@
 - Non-streaming commands operate on all of the events returned by the search
 - These commands force all data to the search head, so they cause a loss of parallelism and lots of data movement
 - Non-streaming commands fall into four types: transforming, generating, orchestrating, and dataset processing
+
+- These distinctions aren't terribly helpful to me

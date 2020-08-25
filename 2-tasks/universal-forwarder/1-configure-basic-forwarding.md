@@ -18,7 +18,7 @@ server=127.0.0.1:9997
   - This address does _not_ connect to the network that my computer is connected to. It is purely for local diagnostics
   - This address _can_ be used in `outputs.conf` to send data to Cribl or any other locally running server, provided that Cribl is also listening on
     localhost
-- "192.168.x.x" is the network address created by my router where all of your networked devices communicate over LAN
+- "192.168.x.x" is the network address created by my router where all of my networked devices communicate over LAN
 # Purpose
 - `outputs.conf` configures where and how a universal forwarder sends data that it collects
 ## Output processors

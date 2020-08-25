@@ -1,0 +1,1 @@
+- See `splunk/3-tools/spl-commands/lookup-related/inputlookup.md`
