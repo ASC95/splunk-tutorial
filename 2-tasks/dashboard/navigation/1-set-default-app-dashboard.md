@@ -15,7 +15,7 @@
 ```
 - Note how I removed the ".xml" extension from the dashboard
 
-- WHAT DOES THE search_view attribute do????
+- WHAT DOES THE `search_view` attribute do????
 
 # Purpose
 - Usually, I don't want to display the boring default search page to the user when they initially enter my app
